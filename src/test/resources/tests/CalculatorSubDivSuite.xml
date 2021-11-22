@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Calculator Subtract and Divide Tests Suite">
+    <test name="Calculator Subtract Test">
+        <classes>
+            <class name="calculator.functional.CalculatorSubTest"/>
+        </classes>
+    </test>
+    <test name="Calculator Divide Test">
+        <classes>
+            <class name="calculator.functional.CalculatorDivTest"/>
+        </classes>
+    </test>
+</suite>

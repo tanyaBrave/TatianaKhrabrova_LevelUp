@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Calculator Trigonometry Tests Suite">
+    <test name="Calculator Trigonometry Test">
+        <groups>
+            <run>
+                <include name="TRIGONOMETRY"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="calculator.functional"/>
+        </packages>
+    </test>
+</suite>

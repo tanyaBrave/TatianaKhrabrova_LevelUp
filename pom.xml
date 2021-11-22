@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.levelp.at</groupId>
+    <artifactId>levelup-automation-fall-2021-nov</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <suite.root.directory>${project.basedir}/src/test/resources/tests</suite.root.directory>
+
+        <testng.version>7.4.0</testng.version>
+        <commons-io.version>20030203.000550</commons-io.version>
+        <checkstyle.version>9.1</checkstyle.version>
+
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>calculator-all-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <suite.xml.name>CalculatorAllTestsSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>calculator-sum-mult-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <suite.xml.name>CalculatorSumMultSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>calculator-sub-div-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <suite.xml.name>CalculatorSubDivSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>calculator-trigonometry-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <suite.xml.name>CalculatorTrigonometrySuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>calculator-other-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <suite.xml.name>CalculatorOtherTestsSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.leveup.qa.at</groupId>
+            <artifactId>calculator</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>D:/levelup/lib/calculator-1.0.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>
+                        <!--  pay attention to use exact url for checkstyle plugin ruleset  -->
+                        https://raw.githubusercontent.com/khda91/leveup-code-checkers-configurations/main/checkstyle/checkstyle.xml
+                    </configLocation>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suite.root.directory}/${suite.xml.name}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+</project>
