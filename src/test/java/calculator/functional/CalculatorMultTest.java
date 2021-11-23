@@ -1,22 +1,24 @@
 package calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
+import calculator.data.provider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CalculatorMultTest extends AbstractBaseCalculatorTest {
 
-    @Test
-    public void multLongTest() {
-        long actualResult = calculator.mult(2, 2);
-        long expectedResult = 4;
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Mult Data Provider Long")
+    public void multLongTest(long[] arguments, long expectedResult) {
+
+        long actualResult = calculator.mult(arguments[0], arguments[1]);
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
-    public void multDoubleTest() {
-        double actualResult = calculator.mult(3.6, 5.8);
-        double expectedResult = Math.floor(20.88);
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Mult Data Provider Double")
+    public void multDoubleTest(double[] arguments, double expectedResult) {
+
+        double actualResult = calculator.mult(arguments[0], arguments[1]);
         Assert.assertEquals(actualResult, expectedResult);
     }
 }

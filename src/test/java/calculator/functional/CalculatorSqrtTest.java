@@ -1,15 +1,17 @@
 package calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
+import calculator.constant.GroupNameConstant;
+import calculator.data.provider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CalculatorSqrtTest extends AbstractBaseCalculatorTest {
 
-    @Test(groups = {GroupNameConstant.OTHER_GROUP})
-    public void sqrtTest() {
-        double actualResult = calculator.sqrt(9.0);
-        double expectedResult = 3.0;
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Sqrt Data Provider",
+            groups = {GroupNameConstant.OTHER_GROUP})
+    public void sqrtTest(double argument, double expectedResult) {
+        double actualResult = calculator.sqrt(argument);
         Assert.assertEquals(actualResult, expectedResult);
     }
 }

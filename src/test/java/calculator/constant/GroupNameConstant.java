@@ -1,4 +1,4 @@
-package calculator.functional.constant;
+package calculator.constant;
 
 public final class GroupNameConstant {
 

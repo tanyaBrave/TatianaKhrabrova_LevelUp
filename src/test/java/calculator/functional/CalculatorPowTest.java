@@ -1,15 +1,18 @@
 package calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
+import calculator.constant.GroupNameConstant;
+import calculator.data.provider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CalculatorPowTest extends AbstractBaseCalculatorTest {
 
-    @Test(groups = {GroupNameConstant.OTHER_GROUP})
-    public void powTest() {
-        double actualResult = calculator.pow(2.0, 5.0);
-        double expectedResult = 32.0;
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Pow Data Provider",
+            groups = {GroupNameConstant.OTHER_GROUP})
+    public void powTest(double[] arguments, double expectedResult) {
+
+        double actualResult = calculator.pow(arguments[0], arguments[1]);
         Assert.assertEquals(actualResult, expectedResult);
     }
 }
