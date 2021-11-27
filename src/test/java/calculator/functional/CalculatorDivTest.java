@@ -29,6 +29,5 @@ public class CalculatorDivTest extends AbstractBaseCalculatorTest {
             double actualResult = calculator.div(arguments[0], arguments[1]);
             Assert.assertEquals(actualResult, expectedResult, 0.01);
         }
-
     }
 }

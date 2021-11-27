@@ -21,5 +21,4 @@ public class CalculatorSumTest extends AbstractBaseCalculatorTest {
         double actualResult = calculator.sum(arguments[0], arguments[1]);
         Assert.assertEquals(actualResult, expectedResult, 0.1);
     }
-
 }
