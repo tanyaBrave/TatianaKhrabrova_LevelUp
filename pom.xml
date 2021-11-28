@@ -91,6 +91,7 @@
                 <suite.xml.name>SeleniumTestsSuite.xml</suite.xml.name>
             </properties>
         </profile>
+
     </profiles>
 
     <dependencies>
