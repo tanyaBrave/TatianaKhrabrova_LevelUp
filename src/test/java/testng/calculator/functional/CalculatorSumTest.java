@@ -1,6 +1,5 @@
-package calculator.functional;
+package testng.calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

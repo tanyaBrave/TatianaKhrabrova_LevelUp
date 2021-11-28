@@ -1,4 +1,4 @@
-package calculator.functional;
+package testng.calculator.functional;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

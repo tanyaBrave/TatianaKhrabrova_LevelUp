@@ -1,4 +1,4 @@
-package calculator.functional.constant;
+package testng.calculator.functional.constant;
 
 public final class GroupNameConstant {
 

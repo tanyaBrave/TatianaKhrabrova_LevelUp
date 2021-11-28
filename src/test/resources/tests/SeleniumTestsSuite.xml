@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Selenium Tests Suite">
+    <test name="Selenium Homework 3 Test">
+        <packages>
+            <package name="selenium.exercise1"/>
+            <package name="selenium.exercise2"/>
+            <package name="selenium.exercise3"/>
+        </packages>
+    </test>
+</suite>

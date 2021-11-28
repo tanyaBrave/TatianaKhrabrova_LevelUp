@@ -15,8 +15,11 @@
         <suite.root.directory>${project.basedir}/src/test/resources/tests</suite.root.directory>
 
         <testng.version>7.4.0</testng.version>
-        <commons-io.version>20030203.000550</commons-io.version>
+        <commons-io.version>2.11.0</commons-io.version>
         <checkstyle.version>9.1</checkstyle.version>
+        <selenium-java.version>4.0.0</selenium-java.version>
+        <webdrivermanager.version>5.0.3</webdrivermanager.version>
+        <assertj-core.version>3.21.0</assertj-core.version>
 
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -77,6 +80,17 @@
                 <suite.xml.name>CalculatorOtherTestsSuite.xml</suite.xml.name>
             </properties>
         </profile>
+
+        <profile>
+            <id>selenium-tests</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <properties>
+                <suite.xml.name>SeleniumTestsSuite.xml</suite.xml.name>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -93,12 +107,32 @@
             <version>${commons-io.version}</version>
         </dependency>
 
+        <!-- Selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+        <!-- AssertJ -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>ru.leveup.qa.at</groupId>
             <artifactId>calculator</artifactId>
             <version>1.0</version>
             <scope>system</scope>
-            <systemPath>D:/levelup/lib/calculator-1.0.jar</systemPath>
+            <systemPath>${project.basedir}/lib/calculator-1.0.jar</systemPath>
         </dependency>
 
     </dependencies>

@@ -1,8 +1,8 @@
-package calculator.functional;
+package testng.calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import testng.calculator.functional.constant.GroupNameConstant;
 
 public class CalculatorTgTest extends AbstractBaseCalculatorTest {
 

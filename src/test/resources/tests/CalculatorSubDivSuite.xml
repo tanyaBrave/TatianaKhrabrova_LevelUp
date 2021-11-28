@@ -3,12 +3,12 @@
 <suite name="Calculator Subtract and Divide Tests Suite">
     <test name="Calculator Subtract Test">
         <classes>
-            <class name="calculator.functional.CalculatorSubTest"/>
+            <class name="testng.calculator.functional.CalculatorSubTest"/>
         </classes>
     </test>
     <test name="Calculator Divide Test">
         <classes>
-            <class name="calculator.functional.CalculatorDivTest"/>
+            <class name="testng.calculator.functional.CalculatorDivTest"/>
         </classes>
     </test>
 </suite>
