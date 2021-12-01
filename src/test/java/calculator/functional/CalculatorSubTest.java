@@ -1,22 +1,24 @@
 package calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
+import calculator.data.provider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CalculatorSubTest extends AbstractBaseCalculatorTest {
 
-    @Test
-    public void subLongTest() {
-        long actualResult = calculator.sub(10, 2);
-        long expectedResult = 8;
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Sub Data Provider Long")
+    public void subLongTest(long[] arguments, long expectedResult) {
+
+        long actualResult = calculator.sub(arguments[0], arguments[1]);
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test
-    public void subDoubleTest() {
-        double actualResult = calculator.sub(5.5, 10);
-        double expectedResult = -4.5;
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Sub Data Provider Double")
+    public void subDoubleTest(double[] arguments, double expectedResult) {
+
+        double actualResult = calculator.sub(arguments[0], arguments[1]);
         Assert.assertEquals(actualResult, expectedResult);
     }
 }

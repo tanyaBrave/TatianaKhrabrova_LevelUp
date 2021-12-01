@@ -1,15 +1,17 @@
 package calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
+import calculator.constant.GroupNameConstant;
+import calculator.data.provider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CalculatorSinTest extends AbstractBaseCalculatorTest {
 
-    @Test(groups = {GroupNameConstant.TRIGONOMETRY_GROUP})
-    public void sinTest() {
-        double actualResult = calculator.sin(90 * Math.PI / 180);
-        double expectedResult = 1.0;
-        Assert.assertEquals(actualResult, expectedResult);
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Sin Data Provider",
+            groups = {GroupNameConstant.TRIGONOMETRY_GROUP})
+    public void sinTest(double argument, double expectedResult) {
+        double actualResult = calculator.sin(argument);
+        Assert.assertEquals(actualResult, expectedResult, 0.1);
     }
 }

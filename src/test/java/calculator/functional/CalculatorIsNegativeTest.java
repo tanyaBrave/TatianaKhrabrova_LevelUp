@@ -1,13 +1,17 @@
 package calculator.functional;
 
-import calculator.functional.constant.GroupNameConstant;
+import calculator.constant.GroupNameConstant;
+import calculator.data.provider.CalculatorDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CalculatorIsNegativeTest extends AbstractBaseCalculatorTest {
 
-    @Test(groups = {GroupNameConstant.OTHER_GROUP})
-    public void isNegativeTest() {
-        Assert.assertTrue(calculator.isNegative(-6));
+    @Test(dataProviderClass = CalculatorDataProvider.class,
+            dataProvider = "Is Negative Data Provider",
+            groups = {GroupNameConstant.OTHER_GROUP})
+    public void isNegativeTest(long argument, boolean expectedResult) {
+        boolean actualResult = calculator.isNegative(argument);
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
