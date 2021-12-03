@@ -17,16 +17,13 @@ public class Exercise1 extends AbstractBaseSeleniumTest {
     public static final String LETTER_CONTENT = "Exercise 1";
 
     @Test
-    public void signInTest() {
-        String title = "Входящие - Почта Mail.ru";
+    public void createDraftAndSendLetter() {
+        String title = "Входящие";
 
-        wait.until(ExpectedConditions.titleIs(title));
+        wait.until(ExpectedConditions.titleContains(title));
 
-        Assert.assertEquals(driver.getTitle(), title);
-    }
+        Assert.assertTrue(driver.getTitle().contains(title));
 
-    @Test(priority = 1)
-    public void saveDraftTest() {
         WebElement writeLetter = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath(XpathLocators.WRITE_LETTER_BUTTON)));
         writeLetter.click();
@@ -56,35 +53,20 @@ public class Exercise1 extends AbstractBaseSeleniumTest {
                 .visibilityOfElementLocated(xpath("//*[@class='ll-sj__normal']")));
 
         Assert.assertEquals(draftLetter.getText(), LETTER_SUBJECT);
-    }
 
-    @Test(priority = 2)
-    public void verifyReceiverTest() {
         WebElement draftReceiver = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath("//*[@class='ll-crpt']")));
         Assert.assertEquals(draftReceiver.getText(), UserData.RECEIVER1);
 
-    }
-
-    @Test(priority = 2)
-    public void verifySubjectTest() {
         WebElement draftSubject = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath("//*[@class='ll-sj__normal']")));
         Assert.assertEquals(draftSubject.getText(), LETTER_SUBJECT);
 
-    }
-
-    @Test(priority = 2)
-    public void verifyContentTest() {
         WebElement draftContent = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath("//*[@class='ll-sp__normal']")));
 
         Assert.assertEquals(draftContent.getText(), LETTER_CONTENT);
 
-    }
-
-    @Test(priority = 3)
-    public void sendAndCheckDraftTest() {
         WebElement draft = driver.findElement(By.xpath("//a[contains(@class, 'llc')]"));
         draft.click();
 
@@ -100,10 +82,7 @@ public class Exercise1 extends AbstractBaseSeleniumTest {
                 .visibilityOfElementLocated(xpath("//*[@class ='dataset__empty']")));
 
         Assert.assertTrue(draftList.isDisplayed());
-    }
 
-    @Test(priority = 4)
-    public void checkOutboxTest() {
         WebElement outboxFolder = driver.findElement(By.xpath(XpathLocators.OUTBOX_FOLDER_BUTTON));
         outboxFolder.click();
 

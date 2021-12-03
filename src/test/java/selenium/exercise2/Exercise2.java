@@ -17,16 +17,12 @@ public class Exercise2 extends AbstractBaseSeleniumTest {
     public static final String LETTER_CONTENT = "Exercise 2";
 
     @Test
-    public void signInTest() {
-        String title = "Входящие - Почта Mail.ru";
+    public void sendLetterAndCheckFolder() {
+        String title = "Входящие";
 
-        wait.until(ExpectedConditions.titleIs(title));
+        wait.until(ExpectedConditions.titleContains(title));
 
-        Assert.assertEquals(driver.getTitle(), title);
-    }
-
-    @Test(priority = 1)
-    public void sendLetterTest() {
+        Assert.assertTrue(driver.getTitle().contains(title));
 
         WebElement writeLetter = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath(XpathLocators.WRITE_LETTER_BUTTON)));
@@ -48,10 +44,7 @@ public class Exercise2 extends AbstractBaseSeleniumTest {
         WebElement block = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath("//*[@__mediators='layout-manager']//*[@title='Закрыть']")));
         block.click();
-    }
 
-    @Test(priority = 2)
-    public void checkOutboxTest() {
         WebElement outboxFolder = driver.findElement(By.xpath(XpathLocators.OUTBOX_FOLDER_BUTTON));
         outboxFolder.click();
 
@@ -59,10 +52,7 @@ public class Exercise2 extends AbstractBaseSeleniumTest {
                 .visibilityOfElementLocated(xpath("//*[@class='ll-sp__normal']")));
 
         Assert.assertEquals(sentLetter.getText(), LETTER_CONTENT);
-    }
 
-    @Test(priority = 3)
-    public void checkTestFolderTest() {
         WebElement testFolder = driver.findElement(By.xpath(XpathLocators.TEST_FOLDER_BUTTON));
         testFolder.click();
 
@@ -70,30 +60,18 @@ public class Exercise2 extends AbstractBaseSeleniumTest {
                 .visibilityOfElementLocated(xpath("//*[@class='ll-sp__normal']")));
 
         Assert.assertEquals(letter.getText(), LETTER_CONTENT);
-    }
 
-    @Test(priority = 4)
-    public void verifyReceiverTest() {
-        WebElement receiver = wait.until(ExpectedConditions
+        WebElement receiverFolder = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath("//*[@class='ll-crpt']")));
-        Assert.assertEquals(receiver.getText(), UserData.USER);
+        Assert.assertEquals(receiverFolder.getText(), UserData.USER);
 
-    }
-
-    @Test(priority = 4)
-    public void verifySubjectTest() {
-        WebElement subject = wait.until(ExpectedConditions
+        WebElement subjectFolder = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath("//*[@class='ll-sj__normal']")));
-        Assert.assertEquals(subject.getText(), LETTER_SUBJECT);
+        Assert.assertEquals(subjectFolder.getText(), LETTER_SUBJECT);
 
-    }
-
-    @Test(priority = 4)
-    public void verifyContentTest() {
-        WebElement content = wait.until(ExpectedConditions
+        WebElement contentFolder = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(xpath("//*[@class='ll-sp__normal']")));
 
-        Assert.assertEquals(content.getText(), LETTER_CONTENT);
-
+        Assert.assertEquals(contentFolder.getText(), LETTER_CONTENT);
     }
 }
