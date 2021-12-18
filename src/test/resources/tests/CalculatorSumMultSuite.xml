@@ -3,12 +3,12 @@
 <suite name="Calculator Sum and Multiplication Tests Suite">
     <test name="Calculator Sub Test">
         <classes>
-            <class name="calculator.functional.CalculatorSumTest"/>
+            <class name="testng.calculator.functional.CalculatorSumTest"/>
         </classes>
     </test>
     <test name="Calculator Multiplication Test">
         <classes>
-            <class name="calculator.functional.CalculatorMultTest"/>
+            <class name="testng.calculator.functional.CalculatorMultTest"/>
         </classes>
     </test>
 </suite>
