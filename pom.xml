@@ -159,14 +159,6 @@
             <version>${allure.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>ru.leveup.qa.at</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/calculator-1.0.jar</systemPath>
-        </dependency>
-
     </dependencies>
 
     <build>
