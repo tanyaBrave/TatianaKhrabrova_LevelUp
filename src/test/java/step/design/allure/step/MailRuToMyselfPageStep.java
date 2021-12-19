@@ -24,8 +24,8 @@ public class MailRuToMyselfPageStep extends MailRuBaseStep {
         toMyselfPage.clickToDeleteButton();
     }
 
-    @Step("Отправитель должен совпадать совпадать с '{receiver}', тема должна совпадать '{subject}', " +
-            "содержание письма должно совпадать с '{content}'")
+    @Step("Отправитель должен совпадать совпадать с '{receiver}', тема должна совпадать '{subject}', "
+            + "содержание письма должно совпадать с '{content}'")
     public void checkLetterData(final String receiver, final String subject, final String content) {
         Assert.assertEquals(toMyselfPage.checkReceiverField(), receiver);
         Assert.assertEquals(toMyselfPage.checkSubjectField(), subject);

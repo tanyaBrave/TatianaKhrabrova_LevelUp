@@ -31,7 +31,7 @@
         <profile>
             <id>calculator-all-tests</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
 
             <properties>
@@ -108,7 +108,7 @@
         <profile>
             <id>step-design-allure</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
 
             <properties>

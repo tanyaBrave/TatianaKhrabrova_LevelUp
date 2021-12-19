@@ -14,8 +14,8 @@ public class MailRuTestPageStep extends MailRuBaseStep {
         this.testPage = new MailRuTestPage(driver);
     }
 
-    @Step("Отправитель должен совпадать совпадать с '{receiver}', тема должна совпадать '{subject}', " +
-            "содержание письма должно совпадать с '{content}'")
+    @Step("Отправитель должен совпадать совпадать с '{receiver}', тема должна совпадать '{subject}', "
+            + "содержание письма должно совпадать с '{content}'")
     public void checkLetterData(final String receiver, final String subject, final String content) {
         Assert.assertEquals(testPage.checkReceiverField(), receiver);
         Assert.assertTrue(testPage.checkSubjectField().contains(subject));
